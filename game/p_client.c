@@ -228,22 +228,22 @@ void ClientObituary (edict_t *self, edict_t *inflictor, edict_t *attacker)
 		switch (mod)
 		{
 		case MOD_SUICIDE:
-			message = "suicides";
+			message = "embraced the darkness";
 			break;
 		case MOD_FALLING:
-			message = "cratered";
+			message = "forgot to use fall control";
 			break;
 		case MOD_CRUSH:
 			message = "was squished";
 			break;
 		case MOD_WATER:
-			message = "sank like a rock";
+			message = "thought hollows could swim";
 			break;
 		case MOD_SLIME:
 			message = "melted";
 			break;
 		case MOD_LAVA:
-			message = "does a back flip into the lava";
+			message = "went for a swim in the Demon Ruins";
 			break;
 		case MOD_EXPLOSIVE:
 		case MOD_BARREL:
@@ -261,7 +261,7 @@ void ClientObituary (edict_t *self, edict_t *inflictor, edict_t *attacker)
 		case MOD_BOMB:
 		case MOD_SPLASH:
 		case MOD_TRIGGER_HURT:
-			message = "was in the wrong place";
+			message = "was killed, because Dark Douls";
 			break;
 		}
 		if (attacker == self)
@@ -269,7 +269,7 @@ void ClientObituary (edict_t *self, edict_t *inflictor, edict_t *attacker)
 			switch (mod)
 			{
 			case MOD_HELD_GRENADE:
-				message = "tried to put the pin back in";
+				message = "ate a fireball";
 				break;
 			case MOD_HG_SPLASH:
 			case MOD_G_SPLASH:
