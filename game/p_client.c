@@ -274,11 +274,11 @@ void ClientObituary (edict_t *self, edict_t *inflictor, edict_t *attacker)
 			case MOD_HG_SPLASH:
 			case MOD_G_SPLASH:
 				if (IsNeutral(self))
-					message = "tripped on its own grenade";
+					message = "fumbled its grenade";
 				else if (IsFemale(self))
-					message = "tripped on her own grenade";
+					message = "fumbled her grenade";
 				else
-					message = "tripped on his own grenade";
+					message = "fumbled his grenade";
 				break;
 			case MOD_R_SPLASH:
 				if (IsNeutral(self))
