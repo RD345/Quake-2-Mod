@@ -701,17 +701,17 @@ char *single_statusbar =
 "	xv	148 "
 "	pic	11 "
 "endif "
-/*
+
 //qsouls *works
 // souls
 "if 18 "
-"	yb	-24 "		// New. Set Y-cursor -24 pixels from physical screen bottom
-"	xr	-58 "		// New. Set X-cursor -58 pixels from physical screen right
+"	yb	-24 "		//  Set Y-cursor -24 pixels from physical screen bottom
+"	xr	-58 "		//  Set X-cursor -58 pixels from physical screen right
 "	num	2	10 "
-"	xr	-24 "		// New
+"	xr	-24 "		
 "	pic	9 "
 "endif "
-*/
+
 ;
 
 char *dm_statusbar =
