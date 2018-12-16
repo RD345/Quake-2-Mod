@@ -1,2 +1,16 @@
-Welcome to my Quake 2 mod!
-No deliverables yet, sorry!
+Welcome to QSouls2! (Quake 2 mod)
+
+Common Deliverables:
+	• Separate Project Folder
+	• A README file describing how to play your mod
+	• A shortcut that automatically launches your mod
+	• User Interface updates to reflect the changes made to the game
+  
+Custom Deliverables:
+	• Souls system
+	• Upgrade system
+	• Melee weapons, and bow
+	• Weapon damage scale based on stats, (dex, str, etc)
+
+HOW TO PLAY
+  Qsouls 2 is best demonstrated in singleplayer, but it is also functional in multiplayer.
