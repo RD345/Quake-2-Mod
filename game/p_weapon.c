@@ -1440,7 +1440,7 @@ Caestus
 
 void Caestus_Fire(edict_t *ent)
 {
-	int	i;
+	//int	i;
 	vec3_t	offset, start;
 	vec3_t	forward, right;
 	vec3_t	angles;

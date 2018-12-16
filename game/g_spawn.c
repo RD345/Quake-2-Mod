@@ -701,7 +701,7 @@ char *single_statusbar =
 "	xv	148 "
 "	pic	11 "
 "endif "
-
+/*
 //qsouls *works
 // souls
 "if 18 "
@@ -711,6 +711,7 @@ char *single_statusbar =
 "	xr	-24 "		// New
 "	pic	9 "
 "endif "
+*/
 ;
 
 char *dm_statusbar =
