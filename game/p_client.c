@@ -623,20 +623,18 @@ void InitClientPersistant (gclient_t *client)
 
 	client->pers.weapon = item;
 
-	//client->pers.health			= 100;
-	//client->pers.max_health		= 100;
+	// qsouls Stats init
 
-	//qsouls Default stat values for player:
+	// Default stat values for player:
 	client->pers.souls			= 0;
-	client->pers.vitality		= 15;
+	client->pers.vitality		= 5;
 	client->pers.strength		= 10;
 	client->pers.dexterity		= 10;
 	client->pers.intelligence	= 10;
 
-	//Update health to reflect player vitality:
+	// Set health to reflect player vitality:
 	client->pers.health			= 10 * client->pers.vitality;
 	client->pers.max_health		= 10 * client->pers.vitality;
-
 	///
 
 	client->pers.max_bullets	= 200;
@@ -648,6 +646,24 @@ void InitClientPersistant (gclient_t *client)
 
 	client->pers.connected = true;
 }
+
+// qsouls levelup function, based off of InitClientPersistant
+
+void PerformLevelUp (gclient_t *client)
+{
+	// qsouls Stats
+	// Default stat values for player:
+	client->pers.souls			= 0;
+	client->pers.vitality		= 5;
+	client->pers.strength		= 10;
+	client->pers.dexterity		= 10;
+	client->pers.intelligence	= 10;
+
+	// Set health based off player vitality:
+	client->pers.health			= 10 * client->pers.vitality;
+	client->pers.max_health		= 10 * client->pers.vitality;
+}
+///
 
 
 void InitClientResp (gclient_t *client)
