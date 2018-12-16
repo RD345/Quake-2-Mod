@@ -269,7 +269,7 @@ void NoAmmoWeaponChange (edict_t *ent)
 		ent->client->newweapon = FindItem ("shotgun");
 		return;
 	}
-	ent->client->newweapon = FindItem ("Hands");
+	ent->client->newweapon = FindItem ("Caestus");
 }
 
 /*
@@ -1439,7 +1439,7 @@ Punching/Melee
 =======================
 */
 
-void Null_Fire(edict_t *ent)
+void Caestus_Fire(edict_t *ent)
 {
 	int	i;
 	vec3_t		start;
@@ -1483,10 +1483,10 @@ void Null_Fire(edict_t *ent)
 //		ent->client->pers.inventory[ent->client->ammo_index]-- // comment these out to prevent the Minus NULL Ammo bug
 }
 
-void Weapon_Null (edict_t *ent)
+void Weapon_Caestus (edict_t *ent)
 {
 	static int	pause_frames[] = { 10, 21, 0 };
 	static int	fire_frames[] = { 6, 0 }; // Frame stuff here
 
-	Weapon_Generic( ent, 3, 9, 22, 24, pause_frames, fire_frames, Null_Fire );
+	Weapon_Generic( ent, 3, 9, 22, 24, pause_frames, fire_frames, Caestus_Fire );
 }

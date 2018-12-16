@@ -383,12 +383,12 @@ void ClientObituary (edict_t *self, edict_t *inflictor, edict_t *attacker)
 				message = "tried to invade";
 				message2 = "'s personal space";
 				break;
-				//Qsouls *works
+//Qsouls *works
 			case MOD_PUNCH:
 				message = "took";
 				message2 = "'s fist in the face";
 				break;
-				//
+///
 			}
 			if (message)
 			{
@@ -426,7 +426,7 @@ void TossClientWeapon (edict_t *self)
 	item = self->client->pers.weapon;
 	if (! self->client->pers.inventory[self->client->ammo_index] )
 		item = NULL;
-	if (item && (strcmp (item->pickup_name, "Hands") == 0))
+	if (item && (strcmp (item->pickup_name, "Caestus") == 0))
 		item = NULL;
 	//
 
@@ -617,7 +617,7 @@ void InitClientPersistant (gclient_t *client)
 
 	memset (&client->pers, 0, sizeof(client->pers));
 
-	item = FindItem("Hands");
+	item = FindItem("Caestus");
 	client->pers.selected_item = ITEM_INDEX(item);
 	client->pers.inventory[client->pers.selected_item] = 1;
 

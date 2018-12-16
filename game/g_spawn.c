@@ -869,7 +869,7 @@ void SP_worldspawn (edict_t *ent)
 
 	//Qsouls *works
 	//PrecacheItem (FindItem ("Blaster"));
-	PrecacheItem (FindItem ("Hands"));
+	PrecacheItem (FindItem ("Caestus"));
 	//End 
 	gi.soundindex ("player/lava1.wav");
 	gi.soundindex ("player/lava2.wav");
