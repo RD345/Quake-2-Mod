@@ -702,14 +702,42 @@ char *single_statusbar =
 "	pic	11 "
 "endif "
 
-//qsouls *works
-// souls
+// qsouls HUD stats
 
-"	yb	-24 "		//  Set Y-cursor -24 pixels from physical screen bottom
+// souls:
+"	yb	-25 "		//  Set Y-cursor -24 pixels from physical screen bottom
 "	xr	-58 "		//  Set X-cursor -58 pixels from physical screen right
 "	num	2	18 "
 "	xr	-24 "		
 "	pic	19 "
+
+// vitality:
+"	yb	-50 "		
+"	xr	-58 "		
+"	num	2	20 "
+"	xr	-24 "		
+"	pic	21 "
+
+// strength:
+"	yb	-75 "		
+"	xr	-58 "		
+"	num	2	22 "
+"	xr	-24 "		
+"	pic	23 "
+
+// dexterity:
+"	yb	-100 "		
+"	xr	-58 "		
+"	num	2	24 "
+"	xr	-24 "		
+"	pic	25 "
+
+// intelligence:
+"	yb	-125 "		
+"	xr	-58 "		
+"	num	2	26 "
+"	xr	-24 "		
+"	pic	27 "
 
 ;
 

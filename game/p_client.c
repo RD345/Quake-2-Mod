@@ -627,7 +627,7 @@ void InitClientPersistant (gclient_t *client)
 
 	// Default stat values for player:
 	client->pers.souls			= 0;
-	client->pers.vitality		= 5;
+	client->pers.vitality		= 5;	// set to half default, because Dark Souls
 	client->pers.strength		= 10;
 	client->pers.dexterity		= 10;
 	client->pers.intelligence	= 10;

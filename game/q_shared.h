@@ -1008,12 +1008,19 @@ typedef enum
 #define	STAT_FLASHES			15		// cleared each frame, 1 = health, 2 = armor
 #define STAT_CHASE				16
 #define STAT_SPECTATOR			17
-//qsouls *works
+//qsouls Stat definitions
 #define STAT_SOULS				18
-#define STAT_SOULS_ICON			19 // Not being used currently
-//
+#define STAT_SOULS_ICON			19 // set to health icon at the moment
+#define STAT_VITALITY			20
+#define STAT_VITALITY_ICON		21
+#define STAT_STRENGTH			22
+#define STAT_STRENGTH_ICON		23
+#define STAT_DEXTERITY			24
+#define STAT_DEXTERITY_ICON		25
+#define STAT_INTELLIGENCE		26
+#define STAT_INTELLIGENCE_ICON	27
 
-
+///
 #define	MAX_STATS				32
 
 
