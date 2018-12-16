@@ -1295,12 +1295,12 @@ gitem_t	itemlist[] =
         NULL,                    // The pickup function
         Use_Weapon,              // How to use
         NULL,                    // the drop function
-       Weapon_Caestus,             //What the use function is
-       "misc/w_pkup.wav",
-       "models/nullweapon.md2",0,
-       "models/nullweapon.md2", //The models stuff.(This is my Caestus model)
-       "w_blaster",             //Icon to be used. you could create another, you probably should
-       "Caestus",             //Pickup name. use this to give the item to someone at the start of the game
+        Weapon_Caestus,             //What the use function is
+        "misc/w_pkup.wav",
+        NULL, 0,
+        "models/weapons/v_blast/tris.md2",  //The models stuff.(This is my Caestus model)
+        "w_blaster",              //Icon to be used. you could create another, you probably should
+        "Caestus",                //Pickup name. use this to give the item to someone at the start of the game
         0,
         0,
         NULL,

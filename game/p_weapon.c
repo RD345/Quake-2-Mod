@@ -1445,7 +1445,7 @@ void Caestus_Fire(edict_t *ent)
 	vec3_t		start;
 	vec3_t		forward, right;
 	vec3_t		angles;
-	int			damage = 5; //change to whatever
+	int			damage = 15; //change to whatever
 	int			kick = 2; //ditto here
 	vec3_t		offset;
 

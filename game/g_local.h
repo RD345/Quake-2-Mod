@@ -843,7 +843,7 @@ typedef struct
 	int			max_health;
 	int			savedFlags;
 
-	//qsouls *works
+	//qsouls *works *not death crash
 	int			souls;
 	//end
 
@@ -1062,8 +1062,8 @@ struct edict_s
 	int			gib_health;
 	int			deadflag;
 	qboolean	show_hostile;
-	//qsouls
-	//int			souls;
+	//qsouls *works
+	int			souls;
 	//end
 
 	float		powerarmor_time;
