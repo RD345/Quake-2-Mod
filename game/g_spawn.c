@@ -704,13 +704,12 @@ char *single_statusbar =
 
 //qsouls *works
 // souls
-//"if 18 "
+
 "	yb	-24 "		//  Set Y-cursor -24 pixels from physical screen bottom
 "	xr	-58 "		//  Set X-cursor -58 pixels from physical screen right
 "	num	2	18 "
 "	xr	-24 "		
-"	pic	0 "
-//"endif "
+"	pic	19 "
 
 ;
 

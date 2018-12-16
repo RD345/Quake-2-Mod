@@ -124,10 +124,10 @@ void Killed (edict_t *targ, edict_t *inflictor, edict_t *attacker, int damage, v
 
 	targ->die (targ, inflictor, attacker, damage, point);
 	//qsouls
-	//if( !attacker->souls )
-		//attacker->souls = 0;
-
-	//attacker->souls += 10;
+	if( !attacker->souls )
+		attacker->souls = 0;
+	if(targ->deadflag && targ->health > -45)
+		attacker->souls += 1;
 	///
 }
 
