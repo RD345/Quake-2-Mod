@@ -695,6 +695,16 @@ void SaveClientData (void)
 			continue;
 		game.clients[i].pers.health = ent->health;
 		game.clients[i].pers.max_health = ent->max_health;
+
+		// qsouls save client data
+
+		game.clients[i].pers.souls = ent->souls;
+		game.clients[i].pers.vitality = ent->vitality;
+		game.clients[i].pers.strength = ent->strength;
+		game.clients[i].pers.dexterity = ent->dexterity;
+		game.clients[i].pers.intelligence = ent->intelligence;
+
+		///
 		game.clients[i].pers.savedFlags = (ent->flags & (FL_GODMODE|FL_NOTARGET|FL_POWER_ARMOR));
 		if (coop->value)
 			game.clients[i].pers.score = ent->client->resp.score;
@@ -705,6 +715,16 @@ void FetchClientEntData (edict_t *ent)
 {
 	ent->health = ent->client->pers.health;
 	ent->max_health = ent->client->pers.max_health;
+
+	// qsouls fetch client data
+	ent->souls = ent->client->pers.souls;
+	ent->vitality = ent->client->pers.vitality;
+	ent->strength = ent->client->pers.strength;
+	ent->dexterity = ent->client->pers.dexterity;
+	ent->intelligence = ent->client->pers.intelligence;
+
+	///
+
 	ent->flags |= ent->client->pers.savedFlags;
 	if (coop->value)
 		ent->client->resp.score = ent->client->pers.score;

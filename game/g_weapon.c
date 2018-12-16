@@ -914,14 +914,7 @@ void fire_bfg (edict_t *self, vec3_t start, vec3_t dir, int damage, int speed, f
 
 	gi.linkentity (bfg);
 }
-//Qsouls *works >>
-/*
-/*
-==================
-Fire_Punch
-Commented for Moddb Tutorial
-==================
-*/
+// Qsouls fire_punch function
 
 void fire_punch (edict_t *self, vec3_t start, vec3_t aim, int reach, int damage, int kick, int quiet, int mod)
 {

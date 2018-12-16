@@ -388,7 +388,7 @@ void G_SetStats (edict_t *ent)
 
 	// qsouls set icons
 
-	ent->client->ps.stats[STAT_SOULS_ICON] = gi.imageindex ("p_envirosuit");	// change to souls icon?
+	ent->client->ps.stats[STAT_SOULS_ICON] = gi.imageindex ("p_quad");	// change to souls icon?
 	ent->client->ps.stats[STAT_SOULS] = ent->souls;
 
 	ent->client->ps.stats[STAT_VITALITY_ICON] = level.pic_health;
@@ -397,7 +397,7 @@ void G_SetStats (edict_t *ent)
 	ent->client->ps.stats[STAT_STRENGTH_ICON] = gi.imageindex ("p_invulnerability");
 	ent->client->ps.stats[STAT_STRENGTH] = ent->strength;
 
-	ent->client->ps.stats[STAT_DEXTERITY_ICON] = gi.imageindex ("p_quad");
+	ent->client->ps.stats[STAT_DEXTERITY_ICON] = gi.imageindex ("p_rebreather");
 	ent->client->ps.stats[STAT_DEXTERITY] = ent->dexterity;
 
 	ent->client->ps.stats[STAT_INTELLIGENCE_ICON] = gi.imageindex ("i_powershield");
