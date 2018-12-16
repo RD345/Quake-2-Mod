@@ -383,7 +383,7 @@ void ClientObituary (edict_t *self, edict_t *inflictor, edict_t *attacker)
 				message = "tried to invade";
 				message2 = "'s personal space";
 				break;
-				//Qsouls
+				//Qsouls *works
 			case MOD_PUNCH:
 				message = "took";
 				message2 = "'s fist in the face";
@@ -422,7 +422,7 @@ void TossClientWeapon (edict_t *self)
 
 	if (!deathmatch->value)
 		return;
-	//qsouls
+	//qsouls *works
 	item = self->client->pers.weapon;
 	if (! self->client->pers.inventory[self->client->ammo_index] )
 		item = NULL;

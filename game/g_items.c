@@ -501,7 +501,7 @@ qboolean Pickup_Ammo (edict_t *ent, edict_t *other)
 
 	if (!Add_Ammo (other, ent->item, count))
 		return false;
-	//qsouls
+	//qsouls *works
 	if (weapon && !oldcount)
 	{
 		if (other->client->pers.weapon != ent->item && ( !deathmatch->value || other->client->pers.weapon == FindItem("hands") ) )
@@ -1289,7 +1289,7 @@ gitem_t	itemlist[] =
 	// WEAPONS 
 	//
 
-	//Qsouls >> 
+	//Qsouls *works 
 	{
         "weapon_null",           //  The map entity name. dont include this in a map whatever you do.
         NULL,                    // The pickup function
@@ -1310,6 +1310,7 @@ gitem_t	itemlist[] =
         0,
         ""
 	},
+	///
 
 /* weapon_blaster (.3 .3 1) (-16 -16 -16) (16 16 16)
 always owned, never in the world

@@ -702,7 +702,7 @@ char *single_statusbar =
 "	pic	11 "
 "endif "
 
-//qsouls
+//qsouls *works
 // souls
 "if 18 "
 "	yb	-24 "		// New. Set Y-cursor -24 pixels from physical screen bottom
@@ -867,7 +867,7 @@ void SP_worldspawn (edict_t *ent)
 
 	snd_fry = gi.soundindex ("player/fry.wav");	// standing in lava / slime
 
-	//Qsouls
+	//Qsouls *works
 	//PrecacheItem (FindItem ("Blaster"));
 	PrecacheItem (FindItem ("Hands"));
 	//End 
