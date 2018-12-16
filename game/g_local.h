@@ -843,9 +843,15 @@ typedef struct
 	int			max_health;
 	int			savedFlags;
 
-	//qsouls *works *not death crash
+	//qsouls *works
 	int			souls;
-	//end
+
+	// new stats:
+	int			vitality;
+	int			strength;
+	int			dexterity;
+	int			intelligence;
+	///
 
 	int			selected_item;
 	int			inventory[MAX_ITEMS];
@@ -1062,9 +1068,17 @@ struct edict_s
 	int			gib_health;
 	int			deadflag;
 	qboolean	show_hostile;
+
 	//qsouls *works
 	int			souls;
-	//end
+
+	// new stats:
+	int			vitality;
+	int			strength;
+	int			dexterity;
+	int			intelligence;
+	
+	///
 
 	float		powerarmor_time;
 

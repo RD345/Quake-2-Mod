@@ -1444,8 +1444,12 @@ void Caestus_Fire(edict_t *ent)
 	vec3_t	offset, start;
 	vec3_t	forward, right;
 	vec3_t	angles;
-	int		damage = 30;	//change to whatever
-	int		kick = 2;		//ditto here
+	int		damage = 25;
+	int		kick = 2;	
+
+	if( ent->strength )
+		damage *= ent->strength / 10;	
+		
 
 	if (ent->client->ps.gunframe == 8) //rename 11 to after you're attack frame
 	{
