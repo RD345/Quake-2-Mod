@@ -1430,24 +1430,22 @@ void Weapon_BFG (edict_t *ent)
 	Weapon_Generic (ent, 8, 32, 55, 58, pause_frames, fire_frames, weapon_bfg_fire);
 }
 
+/* Qsouls *works
+======================================================================
 
-//======================================================================
-//Qsouls *works >>
-/*
-=======================
-Punching/Melee
-=======================
+Caestus
+
+======================================================================
 */
 
 void Caestus_Fire(edict_t *ent)
 {
 	int	i;
-	vec3_t		start;
-	vec3_t		forward, right;
-	vec3_t		angles;
-	int			damage = 30; //change to whatever
-	int			kick = 2; //ditto here
-	vec3_t		offset;
+	vec3_t	offset, start;
+	vec3_t	forward, right;
+	vec3_t	angles;
+	int		damage = 30;	//change to whatever
+	int		kick = 2;		//ditto here
 
 	if (ent->client->ps.gunframe == 8) //rename 11 to after you're attack frame
 	{
@@ -1466,7 +1464,7 @@ void Caestus_Fire(edict_t *ent)
 	if (is_quad)
 	{
 		damage *= 4;
-		kick *= 4;
+		kick *= 2;
 	}
 
 	// get start / end positions
