@@ -947,7 +947,7 @@ void fire_punch (edict_t *self, vec3_t start, vec3_t aim, int reach, int damage,
 		// FIXME - make the damage appear at right spot and direction
 		T_Damage( tr.ent, self, self, vec3_origin, tr.ent->s.origin, vec3_origin, damage, kick / 2,
 					DAMAGE_ENERGY, mod ); // Time to Slice my friends
-		gi.sound( self, CHAN_WEAPON, gi.soundindex( "weapons/phitw1.wav" ), 1, ATTN_IDLE, 0 ); // Used for my Punch. 
+		gi.sound( self, CHAN_WEAPON, gi.soundindex ("weapons/bfg__l1a.wav"), 1, ATTN_IDLE, 0 ); // Used for my Punch. 
                                //Rename and use for whatever
 		
 		if( !quiet )

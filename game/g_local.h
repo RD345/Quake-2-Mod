@@ -1069,7 +1069,7 @@ struct edict_s
 	int			deadflag;
 	qboolean	show_hostile;
 
-	//qsouls *works
+	//qsouls edict_s stats:
 	int			souls;
 
 	// new stats:
