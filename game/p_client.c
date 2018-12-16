@@ -388,6 +388,7 @@ void ClientObituary (edict_t *self, edict_t *inflictor, edict_t *attacker)
 				message = "took";
 				message2 = "'s fist in the face";
 				break;
+				//
 			}
 			if (message)
 			{

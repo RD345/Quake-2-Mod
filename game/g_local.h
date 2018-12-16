@@ -843,6 +843,10 @@ typedef struct
 	int			max_health;
 	int			savedFlags;
 
+	//qsouls
+	//int			souls;
+	//end
+
 	int			selected_item;
 	int			inventory[MAX_ITEMS];
 
@@ -1058,6 +1062,9 @@ struct edict_s
 	int			gib_health;
 	int			deadflag;
 	qboolean	show_hostile;
+	//qsouls
+	//int			souls;
+	//end
 
 	float		powerarmor_time;
 

@@ -701,6 +701,16 @@ char *single_statusbar =
 "	xv	148 "
 "	pic	11 "
 "endif "
+
+//qsouls
+// souls
+"if 18 "
+"	yb	-24 "		// New. Set Y-cursor -24 pixels from physical screen bottom
+"	xr	-58 "		// New. Set X-cursor -58 pixels from physical screen right
+"	num	2	10 "
+"	xr	-24 "		// New
+"	pic	9 "
+"endif "
 ;
 
 char *dm_statusbar =
@@ -860,7 +870,7 @@ void SP_worldspawn (edict_t *ent)
 	//Qsouls
 	//PrecacheItem (FindItem ("Blaster"));
 	PrecacheItem (FindItem ("Hands"));
-	//End Qsouls
+	//End 
 	gi.soundindex ("player/lava1.wav");
 	gi.soundindex ("player/lava2.wav");
 

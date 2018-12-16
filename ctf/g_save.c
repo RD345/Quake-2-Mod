@@ -53,6 +53,9 @@ field_t fields[] = {
 	{"volume", FOFS(volume), F_FLOAT},
 	{"attenuation", FOFS(attenuation), F_FLOAT},
 	{"map", FOFS(map), F_LSTRING},
+	//qsouls
+	//{"souls", FOFS(souls), F_INT},
+	//
 
 	// temp spawn vars -- only valid when the spawn function is called
 	{"lip", STOFS(lip), F_INT, FFL_SPAWNTEMP},
