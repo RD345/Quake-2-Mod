@@ -387,13 +387,11 @@ void G_SetStats (edict_t *ent)
 	ent->client->ps.stats[STAT_HEALTH] = ent->health;
 
 	//qsouls
-	//if( ent->souls == NULL )
-	//	ent->souls = 0;
 
-	//ent->client->ps.stats[STAT_SOULS_ICON] = gi.imageindex (item->icon); // change to souls icon?
-	//ent->client->ps.stats[STAT_SOULS] = ent->souls;
+	ent->client->ps.stats[STAT_SOULS_ICON] = level.pic_health;// change to souls icon?
+	ent->client->ps.stats[STAT_SOULS] = ent->souls;
 
-	//end
+	///end
 
 	//
 	// ammo

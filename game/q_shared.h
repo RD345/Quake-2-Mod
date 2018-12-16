@@ -1010,7 +1010,7 @@ typedef enum
 #define STAT_SPECTATOR			17
 //qsouls *works
 #define STAT_SOULS				18
-#define STAT_SOULS_ICON			19
+#define STAT_SOULS_ICON			19 // Not being used currently
 //
 
 
