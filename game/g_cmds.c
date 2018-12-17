@@ -904,12 +904,7 @@ void Cmd_PlayerList_f(edict_t *ent)
 // levelup command:
 void Cmd_LevelUp_f(edict_t *ent)
 {
-	int			i;
-	char		st[80];
-	char		text[1400];
-	edict_t		*e2;
-	char		*name;
-	name = gi.args();
+	char *name = gi.args();
 
 	if( !name )
 	{
@@ -922,10 +917,8 @@ void Cmd_LevelUp_f(edict_t *ent)
 		gi.cprintf (ent, PRINT_HIGH, "Not enough souls, 10 are required.\n");
 		return;
 	}
-
-	//PerformLevelUp( ent->client );
 	
-	if( Q_stricmp( name, "vit" ) == 0 )
+	if( Q_stricmp( name, "vit" ) == 0 )			// levelup vitality
 	{
 		ent->client->pers.vitality++;
 		ent->client->pers.health		= 10 * ent->client->pers.vitality;
@@ -935,22 +928,22 @@ void Cmd_LevelUp_f(edict_t *ent)
 		ent->health		= ent->client->pers.health;
 		ent->max_health = ent->client->pers.max_health;
 	}
-	else if( Q_stricmp( name, "str" ) == 0 )
+	else if( Q_stricmp( name, "str" ) == 0 )	// levelup strength
 	{
 		ent->client->pers.strength++;
 		ent->strength = ent->client->pers.strength;
 	}
-	else if( Q_stricmp( name, "dex" ) == 0 )
+	else if( Q_stricmp( name, "dex" ) == 0 )	// levelup dex
 	{
 		ent->client->pers.dexterity++;
 		ent->dexterity = ent->client->pers.dexterity;
 	}
-	else if( Q_stricmp( name, "int" ) == 0 )
+	else if( Q_stricmp( name, "int" ) == 0 )	// levelup intelligence
 	{
 		ent->client->pers.intelligence++;
 		ent->intelligence = ent->client->pers.intelligence;
 	}
-	ent->souls -= 10;
+	ent->souls -= 10;							// take the toll
 	return;
 }
 // Give the player 30 souls (cheat):

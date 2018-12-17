@@ -625,11 +625,11 @@ void InitClientPersistant (gclient_t *client)
 
 	// qsouls Stats init
 
-	// Default stat values for player:
+	// Default stat values for player
 	client->pers.souls			= 0;
 	client->pers.vitality		= 5;	// set to half default, because Dark Souls
 	client->pers.strength		= 10;
-	client->pers.dexterity		= 99;
+	client->pers.dexterity		= 10;
 	client->pers.intelligence	= 10;
 
 	// Set health to reflect player vitality:
@@ -646,25 +646,6 @@ void InitClientPersistant (gclient_t *client)
 
 	client->pers.connected = true;
 }
-
-// qsouls levelup function, based off of InitClientPersistant
-
-void PerformLevelUp (gclient_t *client, char stat)
-{
-	// qsouls Stats
-	// Default stat values for player:
-	client->pers.souls			-= 10;
-	client->pers.vitality		= 5;
-	client->pers.strength		= 10;
-	client->pers.dexterity		= 10;
-	client->pers.intelligence	= 10;
-
-	// Set health based off player vitality:
-	client->pers.health			= 10 * client->pers.vitality;
-	client->pers.max_health		= 10 * client->pers.vitality;
-}
-///
-
 
 void InitClientResp (gclient_t *client)
 {
