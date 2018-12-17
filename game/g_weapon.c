@@ -923,9 +923,9 @@ void fire_punch (edict_t *self, vec3_t start, vec3_t aim, int reach, int damage,
 	vec3_t		point;
 	trace_t		tr;
 
-	vectoangles( aim, v );                   //
-	AngleVectors( v, forward, right, up );    //
-	VectorNormalize( forward );               //
+	vectoangles( aim, v );                   
+	AngleVectors( v, forward, right, up );    
+	VectorNormalize( forward );               
 	VectorMA( start, reach, forward, point ); // Aiming stuff
 
 	//see if the hit connects

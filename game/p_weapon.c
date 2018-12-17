@@ -1497,3 +1497,136 @@ void Weapon_Caestus (edict_t *ent)
 
 	Weapon_Generic( ent, 3, 9, 22, 24, pause_frames, fire_frames, Caestus_Fire );
 }
+
+
+/* 
+======================================================================
+
+Greatsword of Artorias
+
+======================================================================
+*/
+
+void Greatsword_Fire(edict_t *ent)
+{
+	//int	i;
+	vec3_t	offset, start;
+	vec3_t	forward, right;
+	vec3_t	angles;
+	int		damage = 15;
+	int		kick = 2;
+	int		attackframes = 10;
+	int		atackspeed = 1; 
+	
+
+	if( ent->strength )
+		damage *= ent->strength / 10;				// scales the damage on strength
+
+	if( ent->dexterity )
+		atackspeed *= ent->dexterity / 10;			// scales the attack speed on dex
+
+	attackframes = attackframes / atackspeed;
+		
+
+	if (ent->client->ps.gunframe == attackframes)	// rename 11 to after you're attack frame
+	{
+		ent->client->ps.gunframe++;
+		return;
+	}
+
+	AngleVectors( ent->client->v_angle, forward, right, NULL );
+
+	VectorScale( forward, -2, ent->client->kick_origin );
+	ent->client->kick_angles[0] = -2;
+
+	VectorSet( offset, 0, 8, ent->viewheight - 8 );
+	P_ProjectSource( ent->client, ent->s.origin, offset, forward, right, start ); // punch origin
+
+	if (is_quad)
+	{
+		damage *= 4;
+		kick *= 2;
+	}
+
+	// get start / end positions
+	VectorAdd( ent->client->v_angle, ent->client->kick_angles, angles );
+	AngleVectors( angles, forward, right, NULL );
+	VectorSet( offset, 0, 8, ent->viewheight - 8 );
+	P_ProjectSource( ent->client, ent->s.origin, offset, forward, right, start );
+	fire_punch( ent, start, forward, 45, damage, 200, 1, MOD_PUNCH ); // yep, matches the fire_ function	
+
+	ent->client->ps.gunframe++; //NEEDED
+	PlayerNoise( ent, start, PNOISE_WEAPON ); //NEEDED
+}
+
+void Weapon_Greatsword (edict_t *ent)
+{
+	static int	pause_frames[] = { 10, 21, 0 };
+	static int	fire_frames[] = { 6, 0 }; // Frame stuff here
+
+	Weapon_Generic( ent, 3, 9, 22, 24, pause_frames, fire_frames, Greatsword_Fire );
+}
+
+/*
+======================================================================
+
+Dragonslayer Greatbow
+
+======================================================================
+*/
+
+void Greatbow_fire (edict_t *ent)
+{
+	vec3_t		start;
+	vec3_t		forward, right;
+	vec3_t		offset;
+	int			damage;
+	int			kick;
+
+	if (deathmatch->value)
+	{	// normal damage is too extreme in dm
+		damage = 100;
+		kick = 200;
+	}
+	else
+	{
+		damage = 150;
+		kick = 250;
+	}
+
+	if (is_quad)
+	{
+		damage *= 4;
+		kick *= 4;
+	}
+
+	AngleVectors (ent->client->v_angle, forward, right, NULL);
+
+	VectorScale (forward, -3, ent->client->kick_origin);
+	ent->client->kick_angles[0] = -3;
+
+	VectorSet(offset, 0, 7,  ent->viewheight-8);
+	P_ProjectSource (ent->client, ent->s.origin, offset, forward, right, start);
+	fire_rail (ent, start, forward, damage, kick);
+
+	// send muzzle flash
+	gi.WriteByte (svc_muzzleflash);
+	gi.WriteShort (ent-g_edicts);
+	gi.WriteByte (MZ_RAILGUN | is_silenced);
+	gi.multicast (ent->s.origin, MULTICAST_PVS);
+
+	ent->client->ps.gunframe++;
+	PlayerNoise(ent, start, PNOISE_WEAPON);
+
+	if (! ( (int)dmflags->value & DF_INFINITE_AMMO ) )
+		ent->client->pers.inventory[ent->client->ammo_index]--;
+}
+
+
+void Weapon_Greatbow (edict_t *ent)
+{
+	static int	pause_frames[]	= {56, 0};
+	static int	fire_frames[]	= {4, 0};
+
+	Weapon_Generic (ent, 3, 18, 56, 61, pause_frames, fire_frames, Greatbow_fire);
+}

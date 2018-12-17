@@ -35,8 +35,10 @@ void Weapon_Grenade (edict_t *ent);
 void Weapon_GrenadeLauncher (edict_t *ent);
 void Weapon_Railgun (edict_t *ent);
 void Weapon_BFG (edict_t *ent);
-//QSouls *works >>
+//QSouls Weapons:
 void Weapon_Caestus (edict_t *ent);
+void Weapon_Greatsword (edict_t *ent);
+void Weapon_Greatbow (edict_t *ent);
 ///
 
 gitem_armor_t jacketarmor_info	= { 25,  50, .30, .00, ARMOR_JACKET};
@@ -1289,23 +1291,68 @@ gitem_t	itemlist[] =
 	// WEAPONS 
 	//
 
-	//Qsouls *works 
+	//Qsouls Weapons
+	// Caestus
 	{
-        "weapon_null",           //  The map entity name. dont include this in a map whatever you do.
-        NULL,                    // The pickup function
-        Use_Weapon,              // How to use
-        NULL,                    // the drop function
-        Weapon_Caestus,             //What the use function is
+        "weapon_null",						// The map entity name
+        NULL,								// The pickup function
+        Use_Weapon,							// How to use
+        NULL,								// the drop function
+        Weapon_Caestus,						// the use function
         "misc/w_pkup.wav",
         NULL, 0,
-        "models/weapons/v_blast/tris.md2",  //The models stuff.(This is my Caestus model)
-        "w_blaster",              //Icon to be used. you could create another, you probably should
-        "Caestus",                //Pickup name. use this to give the item to someone at the start of the game
+        "models/weapons/v_blast/tris.md2",  // The models stuff.(This is my Caestus model)
+        "w_blaster",						// Icon to be used. you could create another, you probably should
+        "Caestus",							// Pickup name. use this to give the item to someone at the start of the game
         0,
         0,
         NULL,
         IT_WEAPON|IT_STAY_COOP,
-        WEAP_BLASTER,            // the model index, just an integer defined in g_local.h
+        WEAP_BLASTER,						// the model index, just an integer defined in g_local.h
+        NULL,
+        0,
+        ""
+	},
+
+	// Greatsword
+	{
+        "weapon_greatsword",				// The map entity name
+        NULL,								// The pickup function
+        Use_Weapon,							// How to use
+        NULL,								// the drop function
+        Weapon_Greatsword,					// the use function
+        "misc/w_pkup.wav",
+        NULL, 0,
+        "models/weapons/v_blast/tris.md2",  // The models stuff
+        "w_machinegun",						// Icon to be used. you could create another, you probably should
+        "Greatsword",						// Pickup name. use this to give the item to someone at the start of the game
+        0,
+        0,
+        NULL,
+        IT_WEAPON|IT_STAY_COOP,
+        WEAP_BLASTER,						// the model index, just an integer defined in g_local.h
+        NULL,
+        0,
+        ""
+	},
+
+	// Greatbow
+	{
+        "weapon_greatbow",						// The map entity name
+        NULL,								// The pickup function
+        Use_Weapon,							// How to use
+        NULL,								// the drop function
+        Weapon_Greatbow,						// the use function
+        "misc/w_pkup.wav",
+        NULL, 0,
+        "models/weapons/v_blast/tris.md2",  // The model
+        "w_shotgun",						// Icon to be used. you could create another, you probably should
+        "Greatbow",							// Pickup name. use this to give the item to someone at the start of the game
+        0,
+        0,
+        NULL,
+        IT_WEAPON|IT_STAY_COOP,
+        WEAP_BLASTER,						// the model index, just an integer defined in g_local.h
         NULL,
         0,
         ""
