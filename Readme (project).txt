@@ -12,9 +12,9 @@ Custom Deliverables:
 (Part)	• Weapons:
 	Melee
 (Done)		> Caestus - fist weapon
-		> A sword
+(Prog)		> Greatsword of Artorias
 	Bow
-		> Not done yet, will be a greatbow
+(Prog)		> Dragonslayer Greatbow
 		
 (Part)	• Weapon damage scale based on stats, (dex, str, etc)
 
