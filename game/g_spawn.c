@@ -732,7 +732,7 @@ char *single_statusbar =
 "	xr	-24 "		
 "	pic	25 "
 
-// intelligence:
+// level:
 "	yb	-125 "		
 "	xr	-58 "		
 "	num	2	26 "

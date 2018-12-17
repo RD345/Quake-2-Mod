@@ -400,8 +400,8 @@ void G_SetStats (edict_t *ent)
 	ent->client->ps.stats[STAT_DEXTERITY_ICON] = gi.imageindex ("p_rebreather");
 	ent->client->ps.stats[STAT_DEXTERITY] = ent->dexterity;
 
-	ent->client->ps.stats[STAT_INTELLIGENCE_ICON] = gi.imageindex ("i_powershield");
-	ent->client->ps.stats[STAT_INTELLIGENCE] = ent->intelligence;
+	ent->client->ps.stats[STAT_LEVEL_ICON] = gi.imageindex ("i_powershield");
+	ent->client->ps.stats[STAT_LEVEL] = ent->level;
 
 	///
 

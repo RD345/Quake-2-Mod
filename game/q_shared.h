@@ -1017,8 +1017,8 @@ typedef enum
 #define STAT_STRENGTH_ICON		23
 #define STAT_DEXTERITY			24
 #define STAT_DEXTERITY_ICON		25
-#define STAT_INTELLIGENCE		26
-#define STAT_INTELLIGENCE_ICON	27
+#define STAT_LEVEL				26
+#define STAT_LEVEL_ICON			27
 
 ///
 #define	MAX_STATS				32

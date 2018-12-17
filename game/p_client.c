@@ -630,7 +630,7 @@ void InitClientPersistant (gclient_t *client)
 	client->pers.vitality		= 5;	// set to half default, because Dark Souls
 	client->pers.strength		= 10;
 	client->pers.dexterity		= 10;
-	client->pers.intelligence	= 10;
+	client->pers.level			= 1;
 
 	// Set health to reflect player vitality:
 	client->pers.health			= 10 * client->pers.vitality;
@@ -683,7 +683,7 @@ void SaveClientData (void)
 		game.clients[i].pers.vitality = ent->vitality;
 		game.clients[i].pers.strength = ent->strength;
 		game.clients[i].pers.dexterity = ent->dexterity;
-		game.clients[i].pers.intelligence = ent->intelligence;
+		game.clients[i].pers.level = ent->level;
 
 		///
 		game.clients[i].pers.savedFlags = (ent->flags & (FL_GODMODE|FL_NOTARGET|FL_POWER_ARMOR));
@@ -702,7 +702,7 @@ void FetchClientEntData (edict_t *ent)
 	ent->vitality = ent->client->pers.vitality;
 	ent->strength = ent->client->pers.strength;
 	ent->dexterity = ent->client->pers.dexterity;
-	ent->intelligence = ent->client->pers.intelligence;
+	ent->level = ent->client->pers.level;
 
 	///
 

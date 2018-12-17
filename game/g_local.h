@@ -850,7 +850,7 @@ typedef struct
 	int			vitality;
 	int			strength;
 	int			dexterity;
-	int			intelligence;
+	int			level;
 	///
 
 	int			selected_item;
@@ -1076,7 +1076,7 @@ struct edict_s
 	int			vitality;
 	int			strength;
 	int			dexterity;
-	int			intelligence;
+	int			level;
 	
 	///
 

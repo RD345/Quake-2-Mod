@@ -938,11 +938,10 @@ void Cmd_LevelUp_f(edict_t *ent)
 		ent->client->pers.dexterity++;
 		ent->dexterity = ent->client->pers.dexterity;
 	}
-	else if( Q_stricmp( name, "int" ) == 0 )	// levelup intelligence
-	{
-		ent->client->pers.intelligence++;
-		ent->intelligence = ent->client->pers.intelligence;
-	}
+	
+	ent->client->pers.level++;				// increment level
+	ent->level = ent->client->pers.level;
+	
 	ent->souls -= 10;							// take the toll
 	return;
 }
