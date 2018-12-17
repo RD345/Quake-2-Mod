@@ -1317,7 +1317,7 @@ gitem_t	itemlist[] =
 	// Greatsword
 	{
         "weapon_greatsword",				// The map entity name
-        NULL,								// The pickup function
+        Pickup_Weapon,								// The pickup function
         Use_Weapon,							// How to use
         NULL,								// the drop function
         Weapon_Greatsword,					// the use function
@@ -1330,7 +1330,7 @@ gitem_t	itemlist[] =
         0,
         NULL,
         IT_WEAPON|IT_STAY_COOP,
-        WEAP_BLASTER,						// the model index, just an integer defined in g_local.h
+        WEAP_SHOTGUN,						// the model index, just an integer defined in g_local.h
         NULL,
         0,
         ""
@@ -1339,7 +1339,7 @@ gitem_t	itemlist[] =
 	// Greatbow
 	{
         "weapon_greatbow",						// The map entity name
-        NULL,								// The pickup function
+        Pickup_Weapon,								// The pickup function
         Use_Weapon,							// How to use
         NULL,								// the drop function
         Weapon_Greatbow,						// the use function
@@ -1352,7 +1352,7 @@ gitem_t	itemlist[] =
         0,
         NULL,
         IT_WEAPON|IT_STAY_COOP,
-        WEAP_BLASTER,						// the model index, just an integer defined in g_local.h
+        WEAP_RAILGUN,						// the model index, just an integer defined in g_local.h
         NULL,
         0,
         ""

@@ -1618,10 +1618,9 @@ void Greatbow_fire (edict_t *ent)
 	ent->client->ps.gunframe++;
 	PlayerNoise(ent, start, PNOISE_WEAPON);
 
-	if (! ( (int)dmflags->value & DF_INFINITE_AMMO ) )
+	//if (! ( (int)dmflags->value & DF_INFINITE_AMMO ) )		// commented out to make arrows infinite
 		ent->client->pers.inventory[ent->client->ammo_index]--;
 }
-
 
 void Weapon_Greatbow (edict_t *ent)
 {
