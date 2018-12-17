@@ -899,7 +899,9 @@ void Cmd_PlayerList_f(edict_t *ent)
 	gi.cprintf(ent, PRINT_HIGH, "%s", text);
 }
 
-// qsouls levelupcommands:
+// qsouls commands
+
+// levelup command:
 void Cmd_LevelUp_f(edict_t *ent)
 {
 	int			i;
@@ -921,40 +923,51 @@ void Cmd_LevelUp_f(edict_t *ent)
 		return;
 	}
 
+	//PerformLevelUp( ent->client );
+	
 	if( Q_stricmp( name, "vit" ) == 0 )
-		ent->vitality++;
-
-	else if( Q_stricmp( name, "str" ) == 0 )
-		ent->strength++;
-
-	else if( Q_stricmp( name, "dex" ) == 0 )
-		ent->dexterity++;
-
-	else if( Q_stricmp( name, "int" ) == 0 )
-		ent->intelligence++;
-
-	// connect time, ping, score, name
-	*text = 0;
-	for (i = 0, e2 = g_edicts + 1; i < maxclients->value; i++, e2++)
 	{
-		if (!e2->inuse)
-			continue;
+		ent->client->pers.vitality++;
+		ent->client->pers.health		= 10 * ent->client->pers.vitality;
+		ent->client->pers.max_health	= 10 * ent->client->pers.vitality;
 
-		sprintf(st, "%02d:%02d %4d %3d %s%s\n",
-			(level.framenum - e2->client->resp.enterframe) / 600,
-			((level.framenum - e2->client->resp.enterframe) % 600)/10,
-			e2->client->ping,
-			e2->client->resp.score,
-			e2->client->pers.netname,
-			e2->client->resp.spectator ? " (spectator)" : "");
-		if (strlen(text) + strlen(st) > sizeof(text) - 50) {
-			sprintf(text+strlen(text), "And more...\n");
-			gi.cprintf(ent, PRINT_HIGH, "%s", text);
-			return;
-		}
-		strcat(text, st);
+		ent->vitality	= ent->client->pers.vitality;
+		ent->health		= ent->client->pers.health;
+		ent->max_health = ent->client->pers.max_health;
 	}
-	gi.cprintf(ent, PRINT_HIGH, "%s", text);
+	else if( Q_stricmp( name, "str" ) == 0 )
+	{
+		ent->client->pers.strength++;
+		ent->strength = ent->client->pers.strength;
+	}
+	else if( Q_stricmp( name, "dex" ) == 0 )
+	{
+		ent->client->pers.dexterity++;
+		ent->dexterity = ent->client->pers.dexterity;
+	}
+	else if( Q_stricmp( name, "int" ) == 0 )
+	{
+		ent->client->pers.intelligence++;
+		ent->intelligence = ent->client->pers.intelligence;
+	}
+	ent->souls -= 10;
+	return;
+}
+// Give the player 30 souls (cheat):
+void Cmd_GiveSouls_f(edict_t *ent)
+{
+	edict_t		*e2;
+	char		*name;
+	name = gi.args();
+
+	if( !name )
+	{
+		gi.cprintf (ent, PRINT_HIGH, "Number not specified.\n");
+		return;
+	}
+	ent->souls += 30;
+	
+	gi.cprintf (ent, PRINT_HIGH, "Gave player 30 souls.\n");
 
 }
 ///
@@ -974,8 +987,17 @@ void ClientCommand (edict_t *ent)
 	cmd = gi.argv(0);
 
 	// qsouls levelup command:
-	if (Q_stricmp(cmd, "levelup") == 0)
+	if( Q_stricmp( cmd, "levelup" ) == 0 )
+	{
 		Cmd_LevelUp_f(ent);
+		return;
+	}
+		
+	if( Q_stricmp( cmd, "givesouls" ) == 0 )
+	{
+		Cmd_GiveSouls_f(ent);
+		return;
+	}
 	
 	///
 

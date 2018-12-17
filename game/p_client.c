@@ -649,11 +649,11 @@ void InitClientPersistant (gclient_t *client)
 
 // qsouls levelup function, based off of InitClientPersistant
 
-void PerformLevelUp (gclient_t *client)
+void PerformLevelUp (gclient_t *client, char stat)
 {
 	// qsouls Stats
 	// Default stat values for player:
-	client->pers.souls			= 0;
+	client->pers.souls			-= 10;
 	client->pers.vitality		= 5;
 	client->pers.strength		= 10;
 	client->pers.dexterity		= 10;
