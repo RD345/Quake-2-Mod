@@ -629,7 +629,7 @@ void InitClientPersistant (gclient_t *client)
 	client->pers.souls			= 0;
 	client->pers.vitality		= 5;	// set to half default, because Dark Souls
 	client->pers.strength		= 10;
-	client->pers.dexterity		= 10;
+	client->pers.dexterity		= 99;
 	client->pers.intelligence	= 10;
 
 	// Set health to reflect player vitality:

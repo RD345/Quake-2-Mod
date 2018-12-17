@@ -899,6 +899,65 @@ void Cmd_PlayerList_f(edict_t *ent)
 	gi.cprintf(ent, PRINT_HIGH, "%s", text);
 }
 
+// qsouls levelupcommands:
+void Cmd_LevelUp_f(edict_t *ent)
+{
+	int			i;
+	char		st[80];
+	char		text[1400];
+	edict_t		*e2;
+	char		*name;
+	name = gi.args();
+
+	if( !name )
+	{
+		gi.cprintf (ent, PRINT_HIGH, "Stat not specified.\n");
+		return;
+	}
+
+	if (ent->souls < 10)
+	{
+		gi.cprintf (ent, PRINT_HIGH, "Not enough souls, 10 are required.\n");
+		return;
+	}
+
+	if( Q_stricmp( name, "vit" ) == 0 )
+		ent->vitality++;
+
+	else if( Q_stricmp( name, "str" ) == 0 )
+		ent->strength++;
+
+	else if( Q_stricmp( name, "dex" ) == 0 )
+		ent->dexterity++;
+
+	else if( Q_stricmp( name, "int" ) == 0 )
+		ent->intelligence++;
+
+	// connect time, ping, score, name
+	*text = 0;
+	for (i = 0, e2 = g_edicts + 1; i < maxclients->value; i++, e2++)
+	{
+		if (!e2->inuse)
+			continue;
+
+		sprintf(st, "%02d:%02d %4d %3d %s%s\n",
+			(level.framenum - e2->client->resp.enterframe) / 600,
+			((level.framenum - e2->client->resp.enterframe) % 600)/10,
+			e2->client->ping,
+			e2->client->resp.score,
+			e2->client->pers.netname,
+			e2->client->resp.spectator ? " (spectator)" : "");
+		if (strlen(text) + strlen(st) > sizeof(text) - 50) {
+			sprintf(text+strlen(text), "And more...\n");
+			gi.cprintf(ent, PRINT_HIGH, "%s", text);
+			return;
+		}
+		strcat(text, st);
+	}
+	gi.cprintf(ent, PRINT_HIGH, "%s", text);
+
+}
+///
 
 /*
 =================
@@ -913,6 +972,12 @@ void ClientCommand (edict_t *ent)
 		return;		// not fully in game yet
 
 	cmd = gi.argv(0);
+
+	// qsouls levelup command:
+	if (Q_stricmp(cmd, "levelup") == 0)
+		Cmd_LevelUp_f(ent);
+	
+	///
 
 	if (Q_stricmp (cmd, "players") == 0)
 	{
@@ -939,7 +1004,6 @@ void ClientCommand (edict_t *ent)
 		Cmd_Help_f (ent);
 		return;
 	}
-
 	if (level.intermissiontime)
 		return;
 
@@ -990,3 +1054,5 @@ void ClientCommand (edict_t *ent)
 	else	// anything that doesn't match a command will be a chat
 		Cmd_Say_f (ent, false, true);
 }
+
+

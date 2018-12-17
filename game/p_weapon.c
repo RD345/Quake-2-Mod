@@ -1445,13 +1445,21 @@ void Caestus_Fire(edict_t *ent)
 	vec3_t	forward, right;
 	vec3_t	angles;
 	int		damage = 25;
-	int		kick = 2;	
+	int		kick = 2;
+	int		attackframes = 10;
+	int		atackspeed = 1; 
+	
 
 	if( ent->strength )
-		damage *= ent->strength / 10;	
+		damage *= ent->strength / 10;				// scales the damage on strength
+
+	if( ent->dexterity )
+		atackspeed *= ent->dexterity / 10;			// scales the attack speed on dex
+
+	attackframes = attackframes / atackspeed;
 		
 
-	if (ent->client->ps.gunframe == 8) //rename 11 to after you're attack frame
+	if (ent->client->ps.gunframe == attackframes)	// rename 11 to after you're attack frame
 	{
 		ent->client->ps.gunframe++;
 		return;
@@ -1463,7 +1471,7 @@ void Caestus_Fire(edict_t *ent)
 	ent->client->kick_angles[0] = -2;
 
 	VectorSet( offset, 0, 8, ent->viewheight - 8 );
-	P_ProjectSource( ent->client, ent->s.origin, offset, forward, right, start ); //where does the hit start from?
+	P_ProjectSource( ent->client, ent->s.origin, offset, forward, right, start ); // punch origin
 
 	if (is_quad)
 	{
@@ -1480,9 +1488,6 @@ void Caestus_Fire(edict_t *ent)
 
 	ent->client->ps.gunframe++; //NEEDED
 	PlayerNoise( ent, start, PNOISE_WEAPON ); //NEEDED
-
-//	if (&#33 ( (int)dmflags->value & DF_INFINITE_AMMO ) )
-//		ent->client->pers.inventory[ent->client->ammo_index]-- // comment these out to prevent the Minus NULL Ammo bug
 }
 
 void Weapon_Caestus (edict_t *ent)
