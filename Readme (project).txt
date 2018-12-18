@@ -9,14 +9,16 @@ Common Deliverables:
 Custom Deliverables:
 (Done)	• Souls system
 (Done)	• Upgrade system
-(Part)	• Weapons:
+(Done)	• Weapons:
 	Melee
 (Done)		> Caestus - fist weapon
-(Prog)		> Greatsword of Artorias
+(Done)		> Greatsword of Artorias
 	Bow
-(Prog)		> Dragonslayer Greatbow
+(Done)		> Dragonslayer Greatbow
 		
-(Part)	• Weapon damage scale based on stats, (dex, str, etc)
+(Part)	• Weapon damage scale based on stats:
+(Done)		> Strength
+(Part)		> Dexterity
 
 ===============| HOW TO PLAY |====================================================================================================
  	Qsouls 2 is meant to be used in singleplayer, but it is also functional in multiplayer, albiet without the hud elements.
