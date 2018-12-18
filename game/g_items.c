@@ -1294,7 +1294,7 @@ gitem_t	itemlist[] =
 	//Qsouls Weapons
 	// Caestus
 	{
-        "weapon_null",						// The map entity name
+        "weapon_caestus",						// The map entity name
         NULL,								// The pickup function
         Use_Weapon,							// How to use
         NULL,								// the drop function

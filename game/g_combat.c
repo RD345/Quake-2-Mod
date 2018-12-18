@@ -123,7 +123,7 @@ void Killed (edict_t *targ, edict_t *inflictor, edict_t *attacker, int damage, v
 	}
 
 	targ->die (targ, inflictor, attacker, damage, point);
-	//qsouls
+	//qsouls generate souls:
 	if(targ->deadflag)
 		attacker->souls += 1;
 

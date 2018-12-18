@@ -962,6 +962,7 @@ void Cmd_GiveSouls_f(edict_t *ent)
 
 }
 
+// Switch weapon
 void Cmd_Switch_DS_Weapon_f(edict_t *ent)
 {
 	gitem_t		*item;
@@ -970,13 +971,13 @@ void Cmd_Switch_DS_Weapon_f(edict_t *ent)
 	char		*weapon;
 
 	if( Q_stricmp( name, "greatsword" ) == 0 )
-		weapon = "Greatsword";
+		weapon = "Weapon_Greatsword";
 
 	else if( Q_stricmp( name, "greatbow" ) == 0 )
-		weapon = "Greatbow";
+		weapon = "Weapon_Greatbow";
 
 	else if( Q_stricmp( name, "caestus" ) == 0 )
-		weapon = "Greatbow";
+		weapon = "Weapon_Caestus";
 
 	else
 	{
@@ -991,17 +992,13 @@ void Cmd_Switch_DS_Weapon_f(edict_t *ent)
 		gi.cprintf (ent, PRINT_HIGH, "Could not find.\n");
 		return;
 	}
-	else
-	{
-		gi.cprintf (ent, PRINT_HIGH, "Found, but I still crash.\n");
-		return;
-	}
 	
 	item = FindItemByClassname( weapon );
 	ent->client->pers.selected_item = ITEM_INDEX(item);
 	ent->client->pers.inventory[ent->client->pers.selected_item] = 1;
 
-	ent->client->pers.weapon = item;
+	//gi.cprintf (ent, PRINT_HIGH, ITEM_INDEX(item));
+	ent->client->newweapon = item;
 }
 ///
 
