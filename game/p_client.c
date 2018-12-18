@@ -383,12 +383,12 @@ void ClientObituary (edict_t *self, edict_t *inflictor, edict_t *attacker)
 				message = "tried to invade";
 				message2 = "'s personal space";
 				break;
-//Qsouls *works
+			//Qsouls MOD messages
 			case MOD_PUNCH:
 				message = "took";
 				message2 = "'s fist in the face";
 				break;
-///
+			///
 			}
 			if (message)
 			{
@@ -623,7 +623,7 @@ void InitClientPersistant (gclient_t *client)
 
 	client->pers.weapon = item;
 
-	// qsouls Stats init
+	// qsouls Stats initialization
 
 	// Default stat values for player
 	client->pers.souls			= 0;

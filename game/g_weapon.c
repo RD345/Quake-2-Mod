@@ -914,8 +914,8 @@ void fire_bfg (edict_t *self, vec3_t start, vec3_t dir, int damage, int speed, f
 
 	gi.linkentity (bfg);
 }
-// Qsouls fire_punch function
 
+// Qsouls melee function
 void fire_punch (edict_t *self, vec3_t start, vec3_t aim, int reach, int damage, int kick, int quiet, int mod)
 {
 	vec3_t		forward, right, up;

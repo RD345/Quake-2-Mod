@@ -499,7 +499,7 @@ extern	int	body_armor_index;
 #define MOD_HIT				32
 #define MOD_TARGET_BLASTER	33
 #define MOD_FRIENDLY_FIRE	0x8000000
-//Qsouls *works
+// Qsouls MOD defines
 #define MOD_PUNCH			34
 ///
 extern	int	meansOfDeath;
@@ -843,7 +843,7 @@ typedef struct
 	int			max_health;
 	int			savedFlags;
 
-	//qsouls *works
+	// qsouls typedef stats
 	int			souls;
 
 	// new stats:

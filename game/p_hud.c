@@ -387,7 +387,6 @@ void G_SetStats (edict_t *ent)
 	ent->client->ps.stats[STAT_HEALTH] = ent->health;
 
 	// qsouls set icons
-
 	ent->client->ps.stats[STAT_SOULS_ICON] = gi.imageindex ("p_quad");	// change to souls icon?
 	ent->client->ps.stats[STAT_SOULS] = ent->souls;
 

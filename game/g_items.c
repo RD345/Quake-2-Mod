@@ -35,7 +35,7 @@ void Weapon_Grenade (edict_t *ent);
 void Weapon_GrenadeLauncher (edict_t *ent);
 void Weapon_Railgun (edict_t *ent);
 void Weapon_BFG (edict_t *ent);
-//QSouls Weapons:
+// QSouls Weapons declarations:
 void Weapon_Caestus (edict_t *ent);
 void Weapon_Greatsword (edict_t *ent);
 void Weapon_Greatbow (edict_t *ent);
@@ -503,7 +503,7 @@ qboolean Pickup_Ammo (edict_t *ent, edict_t *other)
 
 	if (!Add_Ammo (other, ent->item, count))
 		return false;
-	//qsouls *works
+	// qsouls set default weapon
 	if (weapon && !oldcount)
 	{
 		if (other->client->pers.weapon != ent->item && ( !deathmatch->value || other->client->pers.weapon == FindItem("caestus") ) )
@@ -1291,7 +1291,7 @@ gitem_t	itemlist[] =
 	// WEAPONS 
 	//
 
-	//Qsouls Weapons
+	// Qsouls Weapon list (gitem_t)
 	// Caestus
 	{
         "weapon_caestus",						// The map entity name

@@ -702,7 +702,7 @@ char *single_statusbar =
 "	pic	11 "
 "endif "
 
-// qsouls HUD stats
+// qsouls HUD
 
 // souls:
 "	yb	-25 "		//  Set Y-cursor -24 pixels from physical screen bottom
@@ -895,8 +895,7 @@ void SP_worldspawn (edict_t *ent)
 
 	snd_fry = gi.soundindex ("player/fry.wav");	// standing in lava / slime
 
-	//Qsouls *works
-	//PrecacheItem (FindItem ("Blaster"));
+	//Qsouls precache caestus
 	PrecacheItem (FindItem ("Caestus"));
 	//End 
 	gi.soundindex ("player/lava1.wav");

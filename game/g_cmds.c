@@ -899,7 +899,7 @@ void Cmd_PlayerList_f(edict_t *ent)
 	gi.cprintf(ent, PRINT_HIGH, "%s", text);
 }
 
-// qsouls commands
+// qsouls Commands
 
 // levelup command:
 void Cmd_LevelUp_f(edict_t *ent)
@@ -1016,7 +1016,7 @@ void ClientCommand (edict_t *ent)
 
 	cmd = gi.argv(0);
 
-	// qsouls 
+	// qsouls ClientCommand
 	// levelup command:
 	if( Q_stricmp( cmd, "levelup" ) == 0 )
 	{
