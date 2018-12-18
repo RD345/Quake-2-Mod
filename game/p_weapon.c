@@ -1446,20 +1446,20 @@ void Caestus_Fire(edict_t *ent)
 	vec3_t	angles;
 	int		damage = 15;
 	int		kick = 2;
-	int		attackframes = 10;
-	int		atackspeed = 1; 
+	//int		attackframes = 10;
+	//int		atackspeed = 1; 
 	
 
 	if( ent->strength )
 		damage *= ent->strength / 10;				// scales the damage on strength
 
-	if( ent->dexterity )
-		atackspeed *= ent->dexterity / 10;			// scales the attack speed on dex
+	//if( ent->dexterity )
+		//atackspeed *= ent->dexterity / 10;			// scales the attack speed on dex
 
-	attackframes = attackframes / atackspeed;
+	//attackframes = attackframes / atackspeed;
 		
 
-	if (ent->client->ps.gunframe == attackframes)	// rename 11 to after you're attack frame
+	if (ent->client->ps.gunframe == 11)	// rename 11 to after you're attack frame
 	{
 		ent->client->ps.gunframe++;
 		return;
@@ -1484,10 +1484,10 @@ void Caestus_Fire(edict_t *ent)
 	AngleVectors( angles, forward, right, NULL );
 	VectorSet( offset, 0, 8, ent->viewheight - 8 );
 	P_ProjectSource( ent->client, ent->s.origin, offset, forward, right, start );
-	melee( ent, start, forward, 45, damage, 200, 1, MOD_PUNCH ); // yep, matches the fire_ function	
+	melee( ent, start, forward, 45, damage, 200, 1, MOD_PUNCH ); 
 
-	ent->client->ps.gunframe++; //NEEDED
-	PlayerNoise( ent, start, PNOISE_WEAPON ); //NEEDED
+	ent->client->ps.gunframe++; // required
+	PlayerNoise( ent, start, PNOISE_WEAPON ); // required
 }
 
 void Weapon_Caestus (edict_t *ent)
@@ -1513,22 +1513,22 @@ void Greatsword_Fire(edict_t *ent)
 	vec3_t	offset, start;
 	vec3_t	forward, right;
 	vec3_t	angles;
-	int		damage = 15;
-	int		kick = 2;
-	int		attackframes = 10;
-	int		atackspeed = 1; 
+	int		damage = 30;
+	int		kick = 6;
+	// int		attackframes = 10;
+	//int		atackspeed = 1; 
 	
 
 	if( ent->strength )
 		damage *= ent->strength / 10;				// scales the damage on strength
 
-	if( ent->dexterity )
-		atackspeed *= ent->dexterity / 10;			// scales the attack speed on dex
+	// if( ent->dexterity )
+	//	atackspeed *= ent->dexterity / 10;			// scales the attack speed on dex
 
-	attackframes = attackframes / atackspeed;
+	//attackframes = attackframes / atackspeed;
 		
 
-	if (ent->client->ps.gunframe == attackframes)	// rename 11 to after you're attack frame
+	if (ent->client->ps.gunframe == 11)	// rename 11 to after you're attack frame
 	{
 		ent->client->ps.gunframe++;
 		return;
@@ -1564,7 +1564,7 @@ void Weapon_Greatsword (edict_t *ent)
 	static int	pause_frames[] = { 10, 21, 0 };
 	static int	fire_frames[] = { 6, 0 }; // Frame stuff here
 
-	Weapon_Generic( ent, 3, 9, 22, 24, pause_frames, fire_frames, Greatsword_Fire );
+	Weapon_Generic( ent, 3, 6, 9, 12, pause_frames, fire_frames, Greatsword_Fire );
 }
 
 /*
