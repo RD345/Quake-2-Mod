@@ -1435,8 +1435,8 @@ void Weapon_BFG (edict_t *ent)
 // Applys DS stats, then passes them to the generic weapon function:
 void Weapon_DarkSouls( edict_t *ent, int *last_frames, int *pause_frames, int *fire_frames, void (*fire)(edict_t *ent) )
 {
-	last_frames[1] = 10 / ent->dexterity * last_frames[1];	// frame_fire_last: the fire/swing delay
-	last_frames[2] = 10 / ent->dexterity * last_frames[2];	// frame_idle_last: the fire/swing duration
+	//last_frames[1] = 10 / ent->dexterity * last_frames[1];	// frame_fire_last: the fire/swing delay
+	//last_frames[2] = 10 / ent->dexterity * last_frames[2];	// frame_idle_last: the fire/swing duration
 
 	Weapon_Generic( ent, last_frames[0], last_frames[1], last_frames[1] + 13, last_frames[1] + 15, pause_frames, fire_frames, fire );
 
@@ -1509,9 +1509,17 @@ void Caestus_Fire(edict_t *ent)
 void Weapon_Caestus (edict_t *ent)
 {
 	static int	pause_frames[] = { 10, 21, 0 };
-	static int	fire_frames[] = { 6, 0 }; // Frame stuff here
+	static int	fire_frames[]  = { 5, 0 }; // Frame stuff here
 
-	Weapon_Generic( ent, 3, 9, 22, 24, pause_frames, fire_frames, Caestus_Fire );
+	// default values for the weapon, should be self-explanatory
+	int			frame_activate_last		= 3;	// default is 3
+	int			frame_fire_last			= 9;	// default is 9
+	int			frame_idle_last			= 22;	// default is 22
+	int			frame_deactivate_last	= 24;	// default is 24
+
+	int			last_frames[] = {frame_activate_last, frame_fire_last, frame_idle_last, frame_deactivate_last}; // stores all frames to be modified based off of stats
+
+	Weapon_DarkSouls (ent, last_frames, pause_frames, fire_frames, Caestus_Fire);	// passes defaults to be stat'd
 }
 
 
@@ -1532,18 +1540,10 @@ void Greatsword_Swing(edict_t *ent)
 	int		damage = 30;
 	int		kick = 6;
 	
-
-	
-
 	if( ent->strength )
 		damage *= ent->strength / 10;				// scales the damage on strength
 
-	// if( ent->dexterity )
-	//	atackspeed *= ent->dexterity / 10;			// scales the attack speed on dex
-
-	//attackframes = attackframes / atackspeed;
-		
-
+	
 	if (ent->client->ps.gunframe == 11)	// rename 11 to after you're attack frame
 	{
 		ent->client->ps.gunframe++;
@@ -1578,8 +1578,9 @@ void Greatsword_Swing(edict_t *ent)
 void Weapon_Greatsword (edict_t *ent)
 {
 	static int	pause_frames[] = { 10, 21, 0 };
-	static int	fire_frames[] = { 6, 0 }; // Frame stuff here
+	static int	fire_frames[] = { 10, 0 }; // Frame stuff here
 	
+	/*
 	// default values for the weapon, should be self-explanatory
 	static int  frame_activate_last		= 0;
 	static int	frame_fire_last			= 16;
@@ -1587,6 +1588,21 @@ void Weapon_Greatsword (edict_t *ent)
 	static int	frame_deactivate_last	= 31;
 
 	int			last_frames[] = {frame_activate_last, frame_fire_last, frame_idle_last, frame_deactivate_last}; // stores all frames to be modified based off of stats
+
+	Weapon_DarkSouls (ent, last_frames, pause_frames, fire_frames, Greatsword_Swing);	// passes defaults to be stat'd
+	*/
+
+	int attack_duration = 10 * (10 / ent->dexterity);
+	//static int	fire_frames[]	= {12, 0};	//  (fire start), (fire end) 
+
+	// default values for the weapon, should be self-explanatory
+	int frame_activate_last		= 0; // finishes activating in time for the fire
+	int	frame_fire_last			= fire_frames[0] + attack_duration ;	// fire start + attack duration
+	int	frame_idle_last			= frame_fire_last + attack_duration;
+	int	frame_deactivate_last	= frame_idle_last + attack_duration;
+
+	//int	pause_frames[]	= {0};
+	int	last_frames[] = {frame_activate_last, frame_fire_last, frame_idle_last, frame_deactivate_last}; // stores all frames to be modified based off of stats
 
 	Weapon_DarkSouls (ent, last_frames, pause_frames, fire_frames, Greatsword_Swing);	// passes defaults to be stat'd
 }
@@ -1600,23 +1616,15 @@ Dragonslayer Greatbow
 */
 
 void Greatbow_Fire (edict_t *ent)
-{
+{	
 	vec3_t		start;
 	vec3_t		forward, right;
 	vec3_t		offset;
-	int			damage;
-	int			kick;
+	int			damage	= 20;
+	int			kick	= 2;
 
-	if (deathmatch->value)
-	{	// normal damage is too extreme in dm
-		damage = 100;
-		kick = 200;
-	}
-	else
-	{
-		damage = 150;
-		kick = 250;
-	}
+	if( ent->strength )
+		damage *= ent->strength / 10;
 
 	if (is_quad)
 	{
@@ -1641,23 +1649,25 @@ void Greatbow_Fire (edict_t *ent)
 
 	ent->client->ps.gunframe++;
 	PlayerNoise(ent, start, PNOISE_WEAPON);
-
-	//if (! ( (int)dmflags->value & DF_INFINITE_AMMO ) )		// commented out to make arrows infinite
-		ent->client->pers.inventory[ent->client->ammo_index]--;
+	
+	ent->client->pers.inventory[ent->client->ammo_index]--;		// infinite arrows
 }
 
 void Weapon_Greatbow (edict_t *ent)
 {
-	static int	pause_frames[]	= {56, 0};
-	static int	fire_frames[]	= {4, 0};
+	int attack_duration = 30 * (10 / ent->dexterity);
+	static int	fire_frames[]	= {12, 0};	//  (fire start), (fire end) 
 
 	// default values for the weapon, should be self-explanatory
-	static int  frame_activate_last		= 3;
-	static int	frame_fire_last			= 18;
-	static int	frame_idle_last			= 56;
-	static int	frame_deactivate_last	= 61;
+	int frame_activate_last		= 0; // finishes activating in time for the fire
+	int	frame_fire_last			= fire_frames[0] + attack_duration ;	// fire start + attack duration
+	int	frame_idle_last			= frame_fire_last + attack_duration;
+	int	frame_deactivate_last	= frame_idle_last + attack_duration;
 
-	int			last_frames[] = {frame_activate_last, frame_fire_last, frame_idle_last, frame_deactivate_last}; // stores all frames to be modified based off of stats
+	int	pause_frames[]	= {0};
+	int	last_frames[] = {frame_activate_last, frame_fire_last, frame_idle_last, frame_deactivate_last}; // stores all frames to be modified based off of stats
 
 	Weapon_DarkSouls (ent, last_frames, pause_frames, fire_frames, Greatbow_Fire);	// passes defaults to be stat'd
+
+	//Weapon_Generic (ent, last_frames[0], last_frames[1], last_frames[2], last_frames[3], last_frames, pause_frames, fire_frames, Greatbow_Fire);	// passes defaults to be stat'd
 }
