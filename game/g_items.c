@@ -1317,7 +1317,7 @@ gitem_t	itemlist[] =
 	// Greatsword
 	{
         "weapon_greatsword",				// The map entity name
-        Pickup_Weapon,								// The pickup function
+        NULL,								// The pickup function
         Use_Weapon,							// How to use
         NULL,								// the drop function
         Weapon_Greatsword,					// the use function
@@ -1338,13 +1338,14 @@ gitem_t	itemlist[] =
 
 	// Greatbow
 	{
-        "weapon_greatbow",						// The map entity name
-        Pickup_Weapon,								// The pickup function
+        "weapon_greatbow",					// The map entity name
+        NULL,								// The pickup function
         Use_Weapon,							// How to use
         NULL,								// the drop function
-        Weapon_Greatbow,						// the use function
+        Weapon_Greatbow,					// the use function
         "misc/w_pkup.wav",
-        NULL, 0,
+        NULL, 
+		0,
         "models/weapons/v_blast/tris.md2",  // The model
         "w_shotgun",						// Icon to be used. you could create another, you probably should
         "Greatbow",							// Pickup name. use this to give the item to someone at the start of the game

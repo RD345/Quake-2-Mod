@@ -948,7 +948,6 @@ void Cmd_LevelUp_f(edict_t *ent)
 // Give the player 30 souls (cheat):
 void Cmd_GiveSouls_f(edict_t *ent)
 {
-	edict_t		*e2;
 	char		*name;
 	name = gi.args();
 
@@ -961,6 +960,48 @@ void Cmd_GiveSouls_f(edict_t *ent)
 	
 	gi.cprintf (ent, PRINT_HIGH, "Gave player 30 souls.\n");
 
+}
+
+void Cmd_Switch_DS_Weapon_f(edict_t *ent)
+{
+	gitem_t		*item;
+	char		*name;
+	name = gi.args();
+	char		*weapon;
+
+	if( Q_stricmp( name, "greatsword" ) == 0 )
+		weapon = "Greatsword";
+
+	else if( Q_stricmp( name, "greatbow" ) == 0 )
+		weapon = "Greatbow";
+
+	else if( Q_stricmp( name, "caestus" ) == 0 )
+		weapon = "Greatbow";
+
+	else
+	{
+		gi.cprintf (ent, PRINT_HIGH, "Invalid weapon.\n");
+		return;
+	}
+	//gi.cprintf (ent, PRINT_HIGH, "I'm gonna crash!!!.\n");
+	//return;
+
+	if( !FindItemByClassname( weapon ) )
+	{
+		gi.cprintf (ent, PRINT_HIGH, "Could not find.\n");
+		return;
+	}
+	else
+	{
+		gi.cprintf (ent, PRINT_HIGH, "Found, but I still crash.\n");
+		return;
+	}
+	
+	item = FindItemByClassname( weapon );
+	ent->client->pers.selected_item = ITEM_INDEX(item);
+	ent->client->pers.inventory[ent->client->pers.selected_item] = 1;
+
+	ent->client->pers.weapon = item;
 }
 ///
 
@@ -978,19 +1019,25 @@ void ClientCommand (edict_t *ent)
 
 	cmd = gi.argv(0);
 
-	// qsouls levelup command:
+	// qsouls 
+	// levelup command:
 	if( Q_stricmp( cmd, "levelup" ) == 0 )
 	{
 		Cmd_LevelUp_f(ent);
 		return;
 	}
-		
+	// give souls command:
 	if( Q_stricmp( cmd, "givesouls" ) == 0 )
 	{
 		Cmd_GiveSouls_f(ent);
 		return;
 	}
-	
+	// give greatsword command:
+	if( Q_stricmp( cmd, "ds" ) == 0 )
+	{
+		Cmd_Switch_DS_Weapon_f(ent);
+		return;
+	}
 	///
 
 	if (Q_stricmp (cmd, "players") == 0)
