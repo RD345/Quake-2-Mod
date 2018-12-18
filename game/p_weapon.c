@@ -1431,6 +1431,22 @@ void Weapon_BFG (edict_t *ent)
 }
 
 // QSouls Weapon classes
+
+// Applys DS stats, then passes them to the generic weapon function:
+void Weapon_DarkSouls( edict_t *ent, int *last_frames, int *pause_frames, int *fire_frames, void (*fire)(edict_t *ent) )
+{
+	last_frames[1] = 10 / ent->dexterity * last_frames[1];	// frame_fire_last: the fire/swing delay
+	last_frames[2] = 10 / ent->dexterity * last_frames[2];	// frame_idle_last: the fire/swing duration
+
+	Weapon_Generic( ent, last_frames[0], last_frames[1], last_frames[1] + 13, last_frames[1] + 15, pause_frames, fire_frames, fire );
+
+	// attack speed is determined by FRAME_FIRE_LAST, INT s above in order:
+	//int FRAME_ACTIVATE_LAST, 
+	//int FRAME_FIRE_LAST, 
+	//int FRAME_IDLE_LAST, 
+	//int FRAME_DEACTIVATE_LAST,
+}
+
 /*
 ======================================================================
 
@@ -1506,8 +1522,8 @@ Greatsword of Artorias
 
 ======================================================================
 */
-
-void Greatsword_Fire(edict_t *ent)
+//
+void Greatsword_Swing(edict_t *ent)
 {
 	//int	i;
 	vec3_t	offset, start;
@@ -1515,8 +1531,8 @@ void Greatsword_Fire(edict_t *ent)
 	vec3_t	angles;
 	int		damage = 30;
 	int		kick = 6;
-	// int		attackframes = 10;
-	//int		atackspeed = 1; 
+	
+
 	
 
 	if( ent->strength )
@@ -1563,8 +1579,16 @@ void Weapon_Greatsword (edict_t *ent)
 {
 	static int	pause_frames[] = { 10, 21, 0 };
 	static int	fire_frames[] = { 6, 0 }; // Frame stuff here
+	
+	// default values for the weapon, should be self-explanatory
+	static int  frame_activate_last		= 0;
+	static int	frame_fire_last			= 16;
+	static int	frame_idle_last			= 29;
+	static int	frame_deactivate_last	= 31;
 
-	Weapon_Generic( ent, 3, 6, 9, 12, pause_frames, fire_frames, Greatsword_Fire );
+	int			last_frames[] = {frame_activate_last, frame_fire_last, frame_idle_last, frame_deactivate_last}; // stores all frames to be modified based off of stats
+
+	Weapon_DarkSouls (ent, last_frames, pause_frames, fire_frames, Greatsword_Swing);	// passes defaults to be stat'd
 }
 
 /*
@@ -1575,7 +1599,7 @@ Dragonslayer Greatbow
 ======================================================================
 */
 
-void Greatbow_fire (edict_t *ent)
+void Greatbow_Fire (edict_t *ent)
 {
 	vec3_t		start;
 	vec3_t		forward, right;
@@ -1627,5 +1651,13 @@ void Weapon_Greatbow (edict_t *ent)
 	static int	pause_frames[]	= {56, 0};
 	static int	fire_frames[]	= {4, 0};
 
-	Weapon_Generic (ent, 3, 18, 56, 61, pause_frames, fire_frames, Greatbow_fire);
+	// default values for the weapon, should be self-explanatory
+	static int  frame_activate_last		= 3;
+	static int	frame_fire_last			= 18;
+	static int	frame_idle_last			= 56;
+	static int	frame_deactivate_last	= 61;
+
+	int			last_frames[] = {frame_activate_last, frame_fire_last, frame_idle_last, frame_deactivate_last}; // stores all frames to be modified based off of stats
+
+	Weapon_DarkSouls (ent, last_frames, pause_frames, fire_frames, Greatbow_Fire);	// passes defaults to be stat'd
 }
