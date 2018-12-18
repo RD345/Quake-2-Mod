@@ -956,9 +956,9 @@ void Cmd_GiveSouls_f(edict_t *ent)
 		gi.cprintf (ent, PRINT_HIGH, "Number not specified.\n");
 		return;
 	}
-	ent->souls += 30;
+	ent->souls += 50;
 	
-	gi.cprintf (ent, PRINT_HIGH, "Gave player 30 souls.\n");
+	gi.cprintf (ent, PRINT_HIGH, "Gave player 50 souls.\n");
 
 }
 
