@@ -422,7 +422,7 @@ void TossClientWeapon (edict_t *self)
 
 	if (!deathmatch->value)
 		return;
-	//qsouls sets defualt weapon to Caestus
+	// qsouls sets defualt weapon to Caestus
 	item = self->client->pers.weapon;
 	if (! self->client->pers.inventory[self->client->ammo_index] )
 		item = NULL;

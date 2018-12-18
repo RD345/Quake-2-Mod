@@ -895,7 +895,7 @@ void SP_worldspawn (edict_t *ent)
 
 	snd_fry = gi.soundindex ("player/fry.wav");	// standing in lava / slime
 
-	//Qsouls precache caestus
+	// Qsouls precache caestus
 	PrecacheItem (FindItem ("Caestus"));
 	//End 
 	gi.soundindex ("player/lava1.wav");

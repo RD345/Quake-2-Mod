@@ -1484,7 +1484,7 @@ void Caestus_Fire(edict_t *ent)
 	AngleVectors( angles, forward, right, NULL );
 	VectorSet( offset, 0, 8, ent->viewheight - 8 );
 	P_ProjectSource( ent->client, ent->s.origin, offset, forward, right, start );
-	fire_punch( ent, start, forward, 45, damage, 200, 1, MOD_PUNCH ); // yep, matches the fire_ function	
+	melee( ent, start, forward, 45, damage, 200, 1, MOD_PUNCH ); // yep, matches the fire_ function	
 
 	ent->client->ps.gunframe++; //NEEDED
 	PlayerNoise( ent, start, PNOISE_WEAPON ); //NEEDED
@@ -1553,7 +1553,7 @@ void Greatsword_Fire(edict_t *ent)
 	AngleVectors( angles, forward, right, NULL );
 	VectorSet( offset, 0, 8, ent->viewheight - 8 );
 	P_ProjectSource( ent->client, ent->s.origin, offset, forward, right, start );
-	fire_punch( ent, start, forward, 45, damage, 200, 1, MOD_PUNCH ); // yep, matches the fire_ function	
+	melee( ent, start, forward, 45, damage, 200, 1, MOD_PUNCH ); // yep, matches the fire_ function	
 
 	ent->client->ps.gunframe++; //NEEDED
 	PlayerNoise( ent, start, PNOISE_WEAPON ); //NEEDED
